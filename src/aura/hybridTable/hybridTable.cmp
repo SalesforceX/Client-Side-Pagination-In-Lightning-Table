@@ -1,0 +1,79 @@
+<aura:component controller="HybridTableController">
+    <!-- Pre-initialization Attributes -->
+    <aura:attribute name="sObjectAPIName" type="String" default="Account"/>
+    <aura:attribute name="fieldAPINames" type="String" default="Name, AccountNumber, Rating"/>
+    <aura:attribute name="tableSOQL" type="String" default="SELECT ID, Name, AccountNumber, Rating FROM Account"/>
+    <aura:attribute name="visibleRowsCount" type="Integer" default="5"/>
+    
+    <!-- Initialization -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    <!-- Post-initialization attributes -->
+    <aura:attribute access="private" name="firstPageIndex" type="Integer" default="0"/>
+    <aura:attribute access="private" name="previousPageIndex" type="Integer" default="0"/>
+    <aura:attribute access="private" name="nextPageIndex" type="Integer" default="0"/>
+    <aura:attribute access="private" name="lastPageIndex" type="Integer" default="0"/>
+    <aura:attribute access="private" name="currentPageIndex" type="Integer" default="0"/>
+    
+    <aura:attribute access="private" name="totalPages" type="Integer"/>
+    <aura:attribute access="private" name="rowsList" type="HybridTableController.Row[]"/>
+    <aura:attribute access="private" name="visibleRowsList" type="HybridTableController.Row[]"/>
+    <aura:attribute access="private" name="fieldNamesSet" type="String[]"/>
+    
+    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+        <thead>
+            <tr class="slds-text-title--caps">
+                <aura:iteration items="{!v.fieldNamesSet}" var="fieldName">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Record Name">{!fieldName}</div>
+                    </th>
+                </aura:iteration>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.visibleRowsList}" var="row">
+                <tr>
+                    <aura:iteration items="{!row.fieldInfoList}" var="fieldInfo">
+                        <td scope="col">
+                            <div class="slds-truncate" title="Record Name">{!fieldInfo.fieldValue}</div>
+                        </td>
+                    </aura:iteration>
+                </tr>
+            </aura:iteration>
+            
+        </tbody>
+    </table>
+    <div class="slds-button-group" role="group">
+        <!-- Move to First Page Button -->
+        <aura:if isTrue="{!v.currentPageIndex == 0}">
+            <button class="slds-button slds-button--neutral" disabled="true">First</button>
+            <aura:set attribute="else">
+                <button class="slds-button slds-button--neutral" onclick="{!c.loadFirstPage}">First</button>
+            </aura:set>
+        </aura:if>
+        
+        <!-- Move to Previous Page Button -->
+        <aura:if isTrue="{!v.currentPageIndex == 0}">
+            <button class="slds-button slds-button--neutral" disabled="true">Previous</button>
+            <aura:set attribute="else">
+                <button class="slds-button slds-button--neutral" onclick="{!c.loadPreviousPage}">Previous</button>
+            </aura:set>
+        </aura:if>
+        
+        <!-- Move to Next Page Button -->
+        <aura:if isTrue="{!v.currentPageIndex == v.totalPages - 1}">
+            <button class="slds-button slds-button--neutral" disabled="true">Next</button>
+            <aura:set attribute="else">
+                <button class="slds-button slds-button--neutral" onclick="{!c.loadNextPage}">Next</button>
+            </aura:set>
+        </aura:if>
+        
+        <!-- Move to Last Page Button -->
+        <aura:if isTrue="{!v.currentPageIndex == v.totalPages - 1}">
+            <button class="slds-button slds-button--neutral" disabled="true">Last</button>
+            <aura:set attribute="else">
+                <button class="slds-button slds-button--neutral" onclick="{!c.loadLastPage}">Last</button>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>
