@@ -27,7 +27,7 @@
 
 
 ### Clone the entire project:
-```bash
+```sh
 git clone https://github.com/SalesforceX/Client-Side-Pagination-In-Lightning-Table.git
 ```
 
