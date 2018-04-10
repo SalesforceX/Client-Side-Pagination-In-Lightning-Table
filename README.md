@@ -9,7 +9,7 @@
 4. HybridTableController: Apex controller that provides data for table.
 
 ### Initialize the table like this:
-```
+```xml
 <hybridTable
 	sObjectAPIName="Account"
 	fieldAPINames="Name, AccountNumber, Rating"
@@ -27,7 +27,7 @@
 
 
 ### Clone the entire project:
-```
+```bash
 git clone https://github.com/SalesforceX/Client-Side-Pagination-In-Lightning-Table.git
 ```
 
