@@ -1,4 +1,4 @@
-# Salesforce Lightning Table with Client Side Pagination.
+## Salesforce Lightning Table with Client Side Pagination.
 
 > Salesforce Lightning Table with client-side pagination. Download the entire project and use core logic for pagination in your projects. 
 
