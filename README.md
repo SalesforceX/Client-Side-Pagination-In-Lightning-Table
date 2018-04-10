@@ -33,5 +33,5 @@ git clone https://github.com/SalesforceX/Client-Side-Pagination-In-Lightning-Tab
 
 ### Sample Table:
 
-![Pagination Table Sample](https://github.com/SalesforceX/Client-Side-Pagination-In-Lightning-Table/master/screenshots/hybridTableComponent.png)
+![Pagination Table Sample](https://github.com/SalesforceX/Client-Side-Pagination-In-Lightning-Table/blob/master/screenshots/hybridTableComponent.png)
 
