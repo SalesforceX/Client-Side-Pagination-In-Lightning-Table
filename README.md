@@ -10,7 +10,7 @@
 
 ### Initialize the table like this:
 ```html
-<hybridTable
+<c:hybridTable
 	sObjectAPIName="Account"
 	fieldAPINames="Name, AccountNumber, Rating"
 	tableSOQL="SELECT ID, Name, AccountNumber, Rating FROM Account"
@@ -27,7 +27,7 @@
 
 
 ### Clone the entire project:
-```sh
+```console
 git clone https://github.com/SalesforceX/Client-Side-Pagination-In-Lightning-Table.git
 ```
 
